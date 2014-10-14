@@ -45,15 +45,15 @@ public class MainActivity extends ActionBarActivity {
 	private boolean retrievingURLS = true;
     
 	//using static classes to aid in readability
-    public static class IGAdapter extends ArrayAdapter<String> {
-    	private Activity context;
-    	public List<String> urls;
-    	private int screenWidth = 0;
+	public static class IGAdapter extends ArrayAdapter<String> {
+		private Activity context;
+		public List<String> urls;
+		private int screenWidth = 0;
         
-    	static class ViewHolder {
-    		ImageView imageView;
-    		String url;
-    	}
+		static class ViewHolder {
+			ImageView imageView;
+			String url;
+		}
         
 		public IGAdapter(Activity context, int resource, List<String> urls) {
 			super(context, resource, urls);
@@ -94,13 +94,13 @@ public class MainActivity extends ActionBarActivity {
 		}
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+    	setContentView(R.layout.activity_main);
         
         
-        new Thread(new Runnable() {
+    	new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
