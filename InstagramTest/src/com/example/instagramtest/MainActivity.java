@@ -46,14 +46,14 @@ public class MainActivity extends ActionBarActivity {
     
 	//using static classes to aid in readability
     public static class IGAdapter extends ArrayAdapter<String> {
-        private Activity context;
-        public List<String> urls;
-        private int screenWidth = 0;
+    	private Activity context;
+    	public List<String> urls;
+    	private int screenWidth = 0;
         
-        static class ViewHolder {
-        	ImageView imageView;
-        	String url;
-        }
+    	static class ViewHolder {
+    		ImageView imageView;
+    		String url;
+    	}
         
 		public IGAdapter(Activity context, int resource, List<String> urls) {
 			super(context, resource, urls);
@@ -107,20 +107,20 @@ public class MainActivity extends ActionBarActivity {
 					final ArrayList<String> urlsList = getLatestURLs();
 					
 					runOnUiThread(new Runnable() {
-					     @Override
-					     public void run() {
-					    	 final ListView list = (ListView) findViewById(R.id.list_view);
-					    	 adapter = new IGAdapter(thisMainActivity, R.layout.ig_view_layout, urlsList);
-					    	 list.setAdapter(adapter); 
+						@Override
+						public void run() {
+							final ListView list = (ListView) findViewById(R.id.list_view);
+					    	adapter = new IGAdapter(thisMainActivity, R.layout.ig_view_layout, urlsList);
+					    	list.setAdapter(adapter); 
 					    	 
-					    	 /*
-					    	  * Touch to enlarge implementation
-					    	  */
-					    	 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-								@Override
+					    	/*
+					    	 * Touch to enlarge implementation
+					    	 */
+					    	list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					    		@Override
 								public void onItemClick(AdapterView<?> parent,
 										View view, int position, long id) {
-									ImageView iv = (ImageView) view.findViewById(R.id.list_image);
+					    			ImageView iv = (ImageView) view.findViewById(R.id.list_image);
 									
 									Display display = getWindowManager().getDefaultDisplay(); 
 									int screenHeight = display.getHeight();  // deprecated
@@ -137,39 +137,39 @@ public class MainActivity extends ActionBarActivity {
 									view.getLocationInWindow(coords);
 									list.scrollTo(0, coords[1]);
 								}
-					    	 });
+					    	});
 					    	 
-					    	 /*
-					    	  * drag to reorder implementation
-					    	  */
-					    	 ((TouchInterceptor)list).setDropListener(new TouchInterceptor.DropListener() {
-					    		 public void drop(int from, int to) {
-					    			 //Assuming that item is moved up the list			
-					    			 int direction = -1;			
-					    			 int loop_start = from;			
-					    			 int loop_end = to;
+					    	/*
+					    	 * drag to reorder implementation
+					    	 */
+					    	((TouchInterceptor)list).setDropListener(new TouchInterceptor.DropListener() {
+					    		public void drop(int from, int to) {
+					    			//Assuming that item is moved up the list			
+					    			int direction = -1;			
+					    			int loop_start = from;			
+					    			int loop_end = to;
 			
-					    			 //For instance where the item is dragged down the list			
-					    			 if(from < to) {
-					    				 direction = 1;
-					    			 }
+					    			//For instance where the item is dragged down the list			
+					    			if(from < to) {
+					    				direction = 1;
+					    			}
 
-					    			 String target = adapter.urls.get(from);
+					    			String target = adapter.urls.get(from);
 
-					    			 for(int i=loop_start;i!=loop_end;i=i+direction) {
-					    				 adapter.urls.set(i, adapter.urls.get(i+direction));
-					    			 }
+					    			for(int i=loop_start;i!=loop_end;i=i+direction) {
+					    				adapter.urls.set(i, adapter.urls.get(i+direction));
+					    			}
 
-					    			 adapter.urls.set(to, target);
+					    			adapter.urls.set(to, target);
 
-							    	 adapter.notifyDataSetChanged();
-					    		 }
-					    	 });
+							    	adapter.notifyDataSetChanged();
+					    		}
+					    	});
 
-					    	 registerForContextMenu(list);
+					    	registerForContextMenu(list);
 					    	 
-					    	 //TODO: endless scroll implementation
-					    	 /*list.setOnScrollListener(new OnScrollListener(){
+					    	//TODO: endless scroll implementation
+					    	/*list.setOnScrollListener(new OnScrollListener(){
 								@Override
 								public void onScrollStateChanged(
 										AbsListView view, int scrollState) {
@@ -201,7 +201,7 @@ public class MainActivity extends ActionBarActivity {
 									}
 								}
 							});*/
-					     }
+						}
 					});
 			    } catch (Exception e) {
 			    	e.printStackTrace();
@@ -212,19 +212,19 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+    	// Inflate the menu; this adds items to the action bar if it is present.
+    	getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    	// Handle action bar item clicks here. The action bar will
+    	// automatically handle clicks on the Home/Up button, so long
+    	// as you specify a parent activity in AndroidManifest.xml.
+    	int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+        	return true;
         }
         return super.onOptionsItemSelected(item);
     }
