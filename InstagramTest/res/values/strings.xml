@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Instagram Test</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="instagram_description">Instagram #selfie image</string>
+    <string name="ic_handle_description">Drag here to reorder</string>
+
+</resources>
